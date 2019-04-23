@@ -12,10 +12,10 @@ const baseUrl = "http://localhost:3002";
 // POST REQUEST FOR STUDENT DATA [WORKS]
 axios
   .post(`${baseUrl}/api/student/register`, {
-    name: "Asad",
-    lastname: "Ikhlas",
-    email: "asad@asad.com",
-    password: "123456",
+    name: "syed shahbaz",
+    lastname: "hussain",
+    email: "shahbaz@shahbaz.com",
+    password: "1234567",
     role: 'Student'
   })
   .then(res => {
