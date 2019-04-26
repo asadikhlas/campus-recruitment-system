@@ -18,10 +18,6 @@ const Root = () => (
       <Route path="/dashboard" component={Dashboard} />
       <Route path="/adminLogin" exact component={AdminLogin} />
       <Route path="/adminDashboard" exact component={AdminDashboard} />
-
-      {/* <Route path="/adminDashboard" exact render={()=>(
-          this.state.loggedIn ? ( <AdminDashboard/>) : (<Redirect to='/' />)
-        )}/> */}
     </Switch>
   </Router>
 );
