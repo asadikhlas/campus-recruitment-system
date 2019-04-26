@@ -3,32 +3,37 @@ const mongoose = require("mongoose");
 const studentSchema = mongoose.Schema({
   email: {
     type: String,
-    required: true,
+    required: false,
     trim: true,
     unique: 1
   },
 
   password: {
     type: String,
-    required: true,
+    required: false,
     minlength: 4
   },
 
   name: {
     type: String,
-    required: true,
+    required: false,
     maxlength: 100
   },
 
   lastname: {
     type: String,
-    required: true,
+    required: false,
     maxlength: 100
+  },
+  contact: {
+    type: Number,
+    required: false,
+    maxlength: 12
   },
 
   role: {
     type: String, 
-    required: true
+    required: false
   }
 });
 

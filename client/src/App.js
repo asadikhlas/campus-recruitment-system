@@ -1,11 +1,20 @@
 import React, { Component } from "react";
-import Register from "./components/Auth/Register";
 import Login from "./components/Auth/Login";
-import Dashboard from './components/Dashboard'
+import Dashboard from "./components/Dashboard";
+import CompanyDashboard from "./components/Company/CompanyDashboard";
+
+// import AdminLogin from './components/Admin-panel/adminLogin';
 
 class App extends Component {
   state = {
-    loggedIn: false
+    loggedIn: false,
+    role: "company"
+  };
+
+  handleRole = event => {
+    this.setState({
+      role: event.target.value
+    });
   };
 
   handleLogin = () => {
@@ -14,14 +23,29 @@ class App extends Component {
     });
   };
 
+  getDashboard = role => {
+    switch (role) {
+      case "student":
+        return <Dashboard role={this.state.role} />;
+
+      case "company":
+        return <CompanyDashboard role={this.state.role} />;
+    }
+  };
+
   render() {
     return (
       <div>
-        {this.state.loggedIn ? (
-          <Dashboard />
+        {this.state.loggedIn && this.state.role.length > 0 ? (
+          this.getDashboard(this.state.role)
         ) : (
-          <Login handleLogin = {this.handleLogin}/>
+          <Login
+            handleLogin={this.handleLogin}
+            role={this.state.role}
+            handleRole={this.handleRole}
+          />
         )}
+       
       </div>
     );
   }

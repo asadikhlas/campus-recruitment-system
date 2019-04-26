@@ -14,9 +14,10 @@ axios
   .post(`${baseUrl}/api/student/register`, {
     name: "syed shahbaz",
     lastname: "hussain",
-    email: "shahbaz@shahbaz.com",
+    email: "sajid@sajdid.com",
+    contact:'03412986912',
     password: "1234567",
-    role: 'Student'
+    role: 'student'
   })
   .then(res => {
     console.log(res.data);
@@ -37,9 +38,6 @@ axios
 //   .post(`${baseUrl}/api/admin/register`, {
 //     email: "admin@admin.com",
 //     password: "admin",
-//     name: "admin",
-//     lastname: "admin",
-//     role: "Admin"
 //   })
 //   .then(res => {
 //     console.log(res.data);
@@ -62,8 +60,9 @@ axios
 //   .post(`${baseUrl}/api/company/register`, {
 //     email: "axiom@axiom.com",
 //     password: "1234560",
-//     "Company Name": "Panacloud",
-//     role: "Company"
+//     CompanyName: "Panacloud",
+//     role: "company", 
+//     CompanyCeo: 'Adil'
 //   })
 //   .then(res => console.log(res))
 //   .catch(err => console.log(err));
@@ -78,12 +77,14 @@ axios
 // =======================================================
 
 // POST REQUEST FOR JOBS
-// axios
-//   .post(`${baseUrl}/api/company/jobs`, {
-//     title: "React Developer",
-//     description: "A job for react stack developer",
-//     "company name": "Panacloud",
-//     date: "23/04/2019"
-//   })
-//   .then(res => console.log(res))
-//   .catch(err => console.log(err));
+axios
+  .post(`${baseUrl}/api/company/jobs`, {
+    title: "mern Developer",
+    description: "A job for mern stack developer",
+    companyName : "axiom",
+    salary:'250000',
+    date: "21/04/2019"
+   
+  })
+  .then(res => console.log(res))
+  .catch(err => console.log(err));

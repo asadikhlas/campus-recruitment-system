@@ -6,25 +6,18 @@ import {
   Button,
   Header,
   Message,
+  Icon
 } from "semantic-ui-react";
-import { Link } from "react-router-dom";
 import Axios from "axios";
 const baseUrl = "http://localhost:3002";
 
-class Login extends React.Component {
+class AdminLogin extends React.Component {
   state = {
     email: "",
     password: "",
     errors: [],
-    loading: false,
-    role: ""
+    loading: false
   };
-
-  // handleRole = event => {
-  //   this.setState({
-  //     [event.target.name]: event.target.value
-  //   });
-  // };
 
   displayErrors = errors =>
     errors.map((error, i) => <p key={i}>{error.message}</p>);
@@ -34,47 +27,26 @@ class Login extends React.Component {
   };
 
   getData = () => {
-    if (this.props.role === "student") {
-      Axios.get(`${baseUrl}/api/student`).then(res => {
-        if (res.status === 200) {
-          const data = res.data.userData;
-          for (let i = 0; i < data.length; i++) {
-            if (
-              this.state.email === data[i].email &&
-              data[i].password === this.state.password &&
-              this.props.role === data[i].role
-            ) {
-              console.log("logged in");
-              this.props.handleLogin();
-            } else {
-              let error;
-              error = { message: "Data not found" };
-              this.setState({ errors: this.state.errors.concat(error) });
-            }
+    Axios.get(`${baseUrl}/api/admin`).then(res => {
+      if (res.status === 200) {
+        const data = res.data.userData;
+        for (let i = 0; i < data.length; i++) {
+          // console.log(data[i]);
+          if (
+            this.state.email === data[i].email &&
+            data[i].password === this.state.password
+          ) {
+            // this.props.handleAdminLogin();
+
+            this.props.history.push('/adminDashboard')
+          } else {
+            let error;
+            error = { message: "Data not found" };
+            this.setState({ errors: this.state.errors.concat(error) });
           }
         }
-      });
-    } else {
-      Axios.get(`${baseUrl}/api/company`).then(res => {
-        if (res.status === 200) {
-          const data = res.data.userData;
-          for (let i = 0; i < data.length; i++) {
-            if (
-              this.state.email === data[i].email &&
-              data[i].password === this.state.password &&
-              this.props.role === data[i].role
-            ) {
-              console.log("logged in");
-              this.props.handleLogin();
-            } else {
-              let error;
-              error = { message: "Data not found" };
-              this.setState({ errors: this.state.errors.concat(error) });
-            }
-          }
-        }
-      });
-    }
+      }
+    });
   };
 
   handleSubmit = event => {
@@ -93,15 +65,15 @@ class Login extends React.Component {
   };
 
   render() {
-    // console.log(this.state.role);
-    // console.log(this.props);
+    // console.log(this.props)
     const { email, password, errors, loading } = this.state;
 
     return (
       <Grid textAlign="center" verticalAlign="middle" className="app">
         <Grid.Column style={{ maxWidth: 1000 }}>
           <Header as="h2" icon color="violet" textAlign="center">
-            Login Here
+            <Icon name="paper plane" color="violet" />
+            Admin Login
           </Header>
           <Form
             onSubmit={this.handleSubmit}
@@ -135,24 +107,6 @@ class Login extends React.Component {
                 type="password"
                 label="Password"
               />
-              <label
-                style={{
-                  fontWeight: "bold"
-                }}
-              >
-                Type
-              </label>
-              <select
-                value={this.props.role}
-                name="role"
-                onChange={this.props.handleRole}
-              >
-                <option value="company">Company</option>
-                <option value="student">Student</option>
-              </select>
-              <br />
-              <br />
-
               <Button
                 disabled={loading}
                 className={loading ? "loading" : ""}
@@ -170,13 +124,10 @@ class Login extends React.Component {
               {this.displayErrors(errors)}
             </Message>
           )}
-          <Message color="black">
-            Not Registered? <Link to="/register">Create an account</Link> <br></br> Or Are you Admin ? <Link to="/adminLogin">Admin Login</Link>
-          </Message>
         </Grid.Column>
       </Grid>
     );
   }
 }
 
-export default Login;
+export default AdminLogin;

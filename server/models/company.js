@@ -3,26 +3,33 @@ const mongoose = require("mongoose");
 const companySchema = mongoose.Schema({
   email: {
     type: String,
-    required: true,
+    required: false,
     trim: true,
     unique: 1
   },
 
   password: {
     type: String,
-    required: true,
+    required: false,
     minlength: 4
   },
 
-  "Company Name": {
+  CompanyName: {
     type: String,
-    required: true,
-    maxlength: 100
+    required: false,
+    maxlength: 15,
+    trim:true
+  },
+  CompanyCeo: {
+    type: String,
+    required: false,
+    maxlength: 14,
+    trim:true
   },
 
   role: {
     type: String,
-    required: true
+    required: false
   }
 });
 

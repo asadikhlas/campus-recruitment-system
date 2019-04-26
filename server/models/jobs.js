@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const jobSchema = mongoose.Schema({
   title: {
     type: String,
-    required: true,
+    required: false,
     trim: true
   },
 
@@ -12,17 +12,26 @@ const jobSchema = mongoose.Schema({
     required: true
   },
 
-  "company name": {
+  companyName: {
     type: String,
-    required: true,
-    trim: true,
+    required: false,
     maxlength: 20
   },
 
+  salary: {
+    type: Number,
+    required: false,
+    trim: true,
+    maxlength: 10
+  },
   date: {
     type: "String",
-    required: true,
+    required: false,
     trim: true
+  },
+  role: {
+    type: String, 
+    required: false
   }
 });
 

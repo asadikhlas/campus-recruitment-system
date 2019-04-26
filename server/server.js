@@ -39,6 +39,21 @@ app.get("/api/student/", (req, res) => {
   });
 });
 
+app.delete("/api/student",(req, res)=> {
+  const data = req.body;
+  Student.remove(data, (err, doc)=> {
+    if(err){
+      console.log(err)
+    }
+    res.status(200).json({
+      success: true,
+      userData: doc
+    })
+  })
+})
+
+
+
 // Post Student Data
 app.post("/api/student/register", (req, res) => {
   const student = new Student(req.body);

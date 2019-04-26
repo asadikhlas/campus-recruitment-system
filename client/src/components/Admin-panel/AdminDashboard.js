@@ -9,9 +9,10 @@ import {
   Segment,
   Visibility
 } from "semantic-ui-react";
-import JobsTable from "./ReusableComponents/JobsTable";
-import CompanyTable from "./ReusableComponents/CompanyTable";
-import {Redirect} from 'react-router-dom';
+import StudentTable from "../ReusableComponents/StudentTable";
+import CompanyTable from "../ReusableComponents/CompanyTable";
+import AdminJobsTable from '../ReusableComponents/AdminStudentTable';
+import {Redirect } from 'react-router-dom';
 
 // Heads up!
 // We using React Static to prerender our docs with server side rendering, this is a quite simple solution.
@@ -30,7 +31,7 @@ const HomepageHeading = ({ mobile }) => (
   <Container text>
     <Header
       as="h1"
-      content="Welcome To Student Portal"
+      content="Welcome To Admin Portal"
       inverted
       style={{
         fontSize: mobile ? "1.5em" : "1.7em",
@@ -51,41 +52,45 @@ HomepageHeading.propTypes = {
  */
 class DesktopContainer extends Component {
   state = {
-    screen: "jobs"
+    screen: "company",
+    redirect:false
   };
 
-  handleScreen = event => {
-    if (event.target.name === "jobs") {
-      this.setState({
-        screen: "jobs"
-      });
-    } else {
-      this.setState({
-        screen: "company"
-      });
-    }
-  };
-
-  handleSignout = () => {
-    window.location.reload(true)
+  handleScreen = (event) => {
+    this.setState({
+      screen: event.target.name
+    })
   }
 
-  // setRedirect = () => {
-  //   this.setState({
-  //     redirect: true
-  //   })
-  // }
-  // renderRedirect = () => {
-  //   if (this.state.redirect) {
-  //     return <Redirect to='/adminLogin' />
-  //   }
-  // }
+  renderScreen = () => {
+    switch (this.state.screen) {
+      case "company":
+        return <CompanyTable />;
+
+      case "student":
+        return <StudentTable />;
+      case "job":
+        return <AdminJobsTable />;
+      default:
+        break;
+    }
+  };
+  setRedirect = () => {
+    this.setState({
+      redirect: true
+    })
+  }
+  renderRedirect = () => {
+    if (this.state.redirect) {
+      return <Redirect to='/adminLogin' />
+    }
+  }
+
 
   hideFixedMenu = () => this.setState({ fixed: false });
   showFixedMenu = () => this.setState({ fixed: true });
 
   render() {
-    console.log(this.state.screen);
     const { children } = this.props;
     const { fixed } = this.state;
 
@@ -110,33 +115,43 @@ class DesktopContainer extends Component {
               size="large"
             >
               <Container>
-                <Button as="a"
-                    inverted={!fixed}
-                    primary={fixed}
-                    style={{ marginLeft: "0.7em" }} name="jobs" onClick={this.handleScreen}>
-                  View Jobs
+              <Button
+                  as="a"
+                  inverted={!fixed}
+                  primary={fixed}
+                  style={{ marginLeft: "0.7em" }}
+                  name="student"
+                  onClick={this.handleScreen}
+                >
+                  View students
                 </Button>
-
-                <Button as="a"
-                    inverted={!fixed}
-                    primary={fixed}
-                    style={{ marginLeft: "0.7em" }}  name="company" onClick={this.handleScreen}>
+                <Button
+                  as="a"
+                  inverted={!fixed}
+                  primary={fixed}
+                  style={{ marginLeft: "0.7em" }}
+                  name="company"
+                  onClick={this.handleScreen}
+                >
                   View companies
                 </Button>
-
-                {/* <Menu.Item name="company" onClick={this.handleScreen} as="a">
-                  View Companies
-                </Menu.Item> */}
-                {/* <Menu.Item name="jobs" onClick={this.handleScreen} as="a">
+                <Button
+                  as="a"
+                  inverted={!fixed}
+                  primary={fixed}
+                  style={{ marginLeft: "0.7em" }}
+                  name="job"
+                  onClick={this.handleScreen}
+                >
                   View Posted Jobs
-                </Menu.Item> */}
+                </Button>
                 <Menu.Item position="right">
                   <Button
                     as="a"
                     inverted={!fixed}
                     primary={fixed}
                     style={{ marginLeft: "0.5em" }}
-                    onClick={this.handleSignout}
+                    onClick={this.setRedirect}
                   >
                     Sign Out
                   </Button>
@@ -145,8 +160,8 @@ class DesktopContainer extends Component {
             </Menu>
             <HomepageHeading />
           </Segment>
-
-          {this.state.screen === "jobs" ? <JobsTable /> : <CompanyTable />}
+          {this.renderScreen()}
+          {this.renderRedirect()}
         </Visibility>
 
         {children}
@@ -169,5 +184,5 @@ ResponsiveContainer.propTypes = {
   children: PropTypes.node
 };
 
-const StudentDashboard = () => <ResponsiveContainer />;
-export default StudentDashboard;
+const AdminDashboard = () => <ResponsiveContainer />;
+export default AdminDashboard;
