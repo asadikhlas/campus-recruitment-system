@@ -30,6 +30,10 @@ const studentSchema = mongoose.Schema({
     required: false,
     maxlength: 12
   },
+  applied: {
+    type: Object  ,
+    required: false
+  },
 
   role: {
     type: String, 

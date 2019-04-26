@@ -20,12 +20,6 @@ class Login extends React.Component {
     role: ""
   };
 
-  // handleRole = event => {
-  //   this.setState({
-  //     [event.target.name]: event.target.value
-  //   });
-  // };
-
   displayErrors = errors =>
     errors.map((error, i) => <p key={i}>{error.message}</p>);
 

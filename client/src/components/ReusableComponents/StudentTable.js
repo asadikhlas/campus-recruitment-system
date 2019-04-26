@@ -32,6 +32,7 @@ class StudentTable extends Component {
             <Table.HeaderCell>Last Name</Table.HeaderCell>
             <Table.HeaderCell>E-mail address</Table.HeaderCell>
             <Table.HeaderCell>Contact No</Table.HeaderCell>
+            <Table.HeaderCell>Applied To</Table.HeaderCell>
             
           </Table.Row>
         </Table.Header>
@@ -46,6 +47,7 @@ class StudentTable extends Component {
                   <Table.Cell>{item.lastname}</Table.Cell>
                   <Table.Cell>{item.email}</Table.Cell>
                   <Table.Cell>{item.contact}</Table.Cell>
+                  <Table.Cell>{item.applied}</Table.Cell>
                 </Table.Row>
               );
             })}

@@ -10,7 +10,6 @@ import {
   Visibility
 } from "semantic-ui-react";
 import JobPost from "../ReusableComponents/JobPost";
-import {Redirect} from 'react-router-dom';
 import StudentTable from "../ReusableComponents/StudentTable";
 
 // Heads up!
@@ -51,7 +50,7 @@ HomepageHeading.propTypes = {
  */
 class DesktopContainer extends Component {
   state = {
-    screen: "student"
+    screen: "student",
   };
 
   handleScreen = event => {
@@ -160,5 +159,6 @@ ResponsiveContainer.propTypes = {
   children: PropTypes.node
 };
 
-const CompanyDashboard = () => <ResponsiveContainer />;
+const CompanyDashboard = () =>
+<ResponsiveContainer />;
 export default CompanyDashboard;

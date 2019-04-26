@@ -11,7 +11,6 @@ import {
 } from "semantic-ui-react";
 import JobsTable from "./ReusableComponents/JobsTable";
 import CompanyTable from "./ReusableComponents/CompanyTable";
-import {Redirect} from 'react-router-dom';
 
 // Heads up!
 // We using React Static to prerender our docs with server side rendering, this is a quite simple solution.
@@ -70,22 +69,10 @@ class DesktopContainer extends Component {
     window.location.reload(true)
   }
 
-  // setRedirect = () => {
-  //   this.setState({
-  //     redirect: true
-  //   })
-  // }
-  // renderRedirect = () => {
-  //   if (this.state.redirect) {
-  //     return <Redirect to='/adminLogin' />
-  //   }
-  // }
-
   hideFixedMenu = () => this.setState({ fixed: false });
   showFixedMenu = () => this.setState({ fixed: true });
 
   render() {
-    console.log(this.state.screen);
     const { children } = this.props;
     const { fixed } = this.state;
 
@@ -123,13 +110,6 @@ class DesktopContainer extends Component {
                     style={{ marginLeft: "0.7em" }}  name="company" onClick={this.handleScreen}>
                   View companies
                 </Button>
-
-                {/* <Menu.Item name="company" onClick={this.handleScreen} as="a">
-                  View Companies
-                </Menu.Item> */}
-                {/* <Menu.Item name="jobs" onClick={this.handleScreen} as="a">
-                  View Posted Jobs
-                </Menu.Item> */}
                 <Menu.Item position="right">
                   <Button
                     as="a"

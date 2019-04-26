@@ -3,12 +3,12 @@ import Login from "./components/Auth/Login";
 import Dashboard from "./components/Dashboard";
 import CompanyDashboard from "./components/Company/CompanyDashboard";
 
-// import AdminLogin from './components/Admin-panel/adminLogin';
 
 class App extends Component {
   state = {
     loggedIn: false,
-    role: "company"
+    role: "company",
+    studentData: []
   };
 
   handleRole = event => {
@@ -22,14 +22,15 @@ class App extends Component {
       loggedIn: true
     });
   };
-
   getDashboard = role => {
     switch (role) {
       case "student":
-        return <Dashboard role={this.state.role} />;
+        return <Dashboard />;
 
       case "company":
-        return <CompanyDashboard role={this.state.role} />;
+        return <CompanyDashboard />;
+      default:
+        return <Login />;
     }
   };
 
@@ -45,7 +46,6 @@ class App extends Component {
             handleRole={this.handleRole}
           />
         )}
-       
       </div>
     );
   }
