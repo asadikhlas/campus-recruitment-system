@@ -66,8 +66,8 @@ class DesktopContainer extends Component {
   };
 
   handleSignout = () => {
-    window.location.reload(true)
-  }
+    window.location.reload(true);
+  };
 
   hideFixedMenu = () => this.setState({ fixed: false });
   showFixedMenu = () => this.setState({ fixed: true });
@@ -97,17 +97,25 @@ class DesktopContainer extends Component {
               size="large"
             >
               <Container>
-                <Button as="a"
-                    inverted={!fixed}
-                    primary={fixed}
-                    style={{ marginLeft: "0.7em" }} name="jobs" onClick={this.handleScreen}>
+                <Button
+                  as="a"
+                  inverted={!fixed}
+                  primary={fixed}
+                  style={{ marginLeft: "0.7em" }}
+                  name="jobs"
+                  onClick={this.handleScreen}
+                >
                   View Jobs
                 </Button>
 
-                <Button as="a"
-                    inverted={!fixed}
-                    primary={fixed}
-                    style={{ marginLeft: "0.7em" }}  name="company" onClick={this.handleScreen}>
+                <Button
+                  as="a"
+                  inverted={!fixed}
+                  primary={fixed}
+                  style={{ marginLeft: "0.7em" }}
+                  name="company"
+                  onClick={this.handleScreen}
+                >
                   View companies
                 </Button>
                 <Menu.Item position="right">
