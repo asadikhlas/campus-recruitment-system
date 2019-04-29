@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Form} from "semantic-ui-react";
-import axios from 'axios';
+import { Form } from "semantic-ui-react";
+import axios from "axios";
 const baseUrl = "http://localhost:3002";
 
 class JobPost extends Component {
@@ -18,35 +18,34 @@ class JobPost extends Component {
   };
 
   getData = () => {
-    const { companyName,title,  salary, date, description } = this.state;
-      axios
-        .post(`${baseUrl}/api/company/jobs`, {
-          title: title,
-          description: description,
-          companyName: companyName,
-          salary: salary,
-          date: date,
-        })
-        .then(res => {
-          if (res.status === 200) {
-            alert("your post are successfully submitted to us");
-          }
-        })
-        .catch(err => {
-          console.log(err);
-        });
+    const { companyName, title, salary, date, description } = this.state;
+    axios
+      .post(`${baseUrl}/api/company/jobs`, {
+        title: title,
+        description: description,
+        companyName: companyName,
+        salary: salary,
+        date: date
+      })
+      .then(res => {
+        if (res.status === 200) {
+          alert("your post are successfully submitted to us");
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
 
   handleSubmit = event => {
-      event.preventDefault();
-      this.getData();
+    event.preventDefault();
+    this.getData();
   };
 
   render() {
-
-    const {title, companyName, salary, date, description} = this.state
+    const { title, companyName, salary, date, description } = this.state;
     return (
-      <Form  onSubmit={this.handleSubmit}>
+      <Form onSubmit={this.handleSubmit}>
         <Form.Group widths="equal">
           <Form.Input
             id="form-input-control-first-name"
@@ -79,7 +78,6 @@ class JobPost extends Component {
             value={date}
             placeholder="date"
             name="date"
-            
           />
         </Form.Group>
         <Form.Input
