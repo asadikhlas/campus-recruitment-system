@@ -39,20 +39,18 @@ app.get("/api/student/", (req, res) => {
   });
 });
 
-app.delete("/api/student",(req, res)=> {
+app.delete("/api/student", (req, res) => {
   const data = req.body;
-  Student.remove(data, (err, doc)=> {
-    if(err){
-      console.log(err)
+  Student.remove(data, (err, doc) => {
+    if (err) {
+      console.log(err);
     }
     res.status(200).json({
       success: true,
       userData: doc
-    })
-  })
-})
-
-
+    });
+  });
+});
 
 // Post Student Data
 app.post("/api/student/register", (req, res) => {
@@ -129,20 +127,19 @@ app.post("/api/company/register", (req, res) => {
   });
 });
 
-
 //Delete company data
-app.delete("/api/company",(req, res)=> {
+app.delete("/api/company", (req, res) => {
   const data = req.body;
-  Company.remove(data, (err, doc)=> {
-    if(err){
-      console.log(err)
+  Company.remove(data, (err, doc) => {
+    if (err) {
+      console.log(err);
     }
     res.status(200).json({
       success: true,
       userData: doc
-    })
-  })
-})
+    });
+  });
+});
 
 // Get request for Jobs
 app.get("/api/company/jobs", (req, res) => {
@@ -169,18 +166,18 @@ app.post("/api/company/jobs", (req, res) => {
 });
 
 // delete jobs api
-app.delete("/api/company/jobs",(req, res)=> {
+app.delete("/api/company/jobs", (req, res) => {
   const data = req.body;
-  Jobs.remove(data, (err, doc)=> {
-    if(err){
-      console.log(err)
+  Jobs.remove(data, (err, doc) => {
+    if (err) {
+      console.log(err);
     }
     res.status(200).json({
       success: true,
       userData: doc
-    })
-  })
-})
+    });
+  });
+});
 
 const PORT = process.env.PORT || 3002;
 app.listen(PORT, () => {

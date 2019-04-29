@@ -30,7 +30,7 @@ const jobSchema = mongoose.Schema({
     trim: true
   },
   role: {
-    type: String, 
+    type: String,
     required: false
   }
 });
