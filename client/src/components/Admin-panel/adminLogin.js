@@ -31,14 +31,11 @@ class AdminLogin extends React.Component {
       if (res.status === 200) {
         const data = res.data.userData;
         for (let i = 0; i < data.length; i++) {
-          // console.log(data[i]);
           if (
             this.state.email === data[i].email &&
             data[i].password === this.state.password
           ) {
-            // this.props.handleAdminLogin();
-
-            this.props.history.push('/adminDashboard')
+            this.props.history.push("/adminDashboard");
           } else {
             let error;
             error = { message: "Data not found" };
@@ -65,9 +62,7 @@ class AdminLogin extends React.Component {
   };
 
   render() {
-    // console.log(this.props)
     const { email, password, errors, loading } = this.state;
-
     return (
       <Grid textAlign="center" verticalAlign="middle" className="app">
         <Grid.Column style={{ maxWidth: 1000 }}>
