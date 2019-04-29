@@ -5,7 +5,7 @@ import {
   Segment,
   Button,
   Header,
-  Message,
+  Message
 } from "semantic-ui-react";
 import { Link } from "react-router-dom";
 import Axios from "axios";
@@ -165,7 +165,8 @@ class Login extends React.Component {
             </Message>
           )}
           <Message color="black">
-            Not Registered? <Link to="/register">Create an account</Link> <br></br> Or Are you Admin ? <Link to="/adminLogin">Admin Login</Link>
+            Not Registered? <Link to="/register">Create an account</Link> <br />{" "}
+            Or Are you Admin ? <Link to="/adminLogin">Admin Login</Link>
           </Message>
         </Grid.Column>
       </Grid>
