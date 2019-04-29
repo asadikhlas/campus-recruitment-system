@@ -17,7 +17,7 @@ const baseUrl = "http://localhost:3002";
 //     email: "asfn@saf.com",
 //     contact:'03412986912',
 //     password: "1234567",
-//     role: 'student', 
+//     role: 'student',
 //     applied: ['panacloud']
 //   })
 //   .then(res => {
@@ -62,7 +62,7 @@ const baseUrl = "http://localhost:3002";
 //     email: "zia@zia.com",
 //     password: "1234560",
 //     CompanyName: "panacloud",
-//     role: "company", 
+//     role: "company",
 //     CompanyCeo: 'Zia khan'
 //   })
 //   .then(res => console.log(res))
@@ -86,11 +86,10 @@ const baseUrl = "http://localhost:3002";
 //     salary:'1878000',
 //     date: "10/12/2019",
 //     applied: "panacloud"
-   
+
 //   })
 //   .then(res => console.log(res))
 //   .catch(err => console.log(err));
-
 
 // axios.delete("http://localhost:3002/api/student",{data: {email: "daniyal@daniyal.com"}})
 //     .then(res => console.log(res))
