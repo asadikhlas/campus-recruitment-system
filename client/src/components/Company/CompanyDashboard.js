@@ -50,7 +50,7 @@ HomepageHeading.propTypes = {
  */
 class DesktopContainer extends Component {
   state = {
-    screen: "student",
+    screen: "student"
   };
 
   handleScreen = event => {
@@ -65,10 +65,9 @@ class DesktopContainer extends Component {
     }
   };
 
-handleSignout = () => {
-window.location.reload(true)
-}
-
+  handleSignout = () => {
+    window.location.reload(true);
+  };
 
   hideFixedMenu = () => this.setState({ fixed: false });
   showFixedMenu = () => this.setState({ fixed: true });
@@ -126,7 +125,6 @@ window.location.reload(true)
                     primary={fixed}
                     style={{ marginLeft: "0.5em" }}
                     onClick={this.handleSignout}
-
                   >
                     Sign Out
                   </Button>
@@ -159,6 +157,5 @@ ResponsiveContainer.propTypes = {
   children: PropTypes.node
 };
 
-const CompanyDashboard = () =>
-<ResponsiveContainer />;
+const CompanyDashboard = () => <ResponsiveContainer />;
 export default CompanyDashboard;
