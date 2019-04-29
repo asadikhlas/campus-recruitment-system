@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {  Table } from "semantic-ui-react";
+import { Table } from "semantic-ui-react";
 import Axios from "axios";
 
 class StudentTable extends Component {
@@ -19,26 +19,28 @@ class StudentTable extends Component {
 
   render() {
     return (
-        <div>
-            <h2 style={{
-                textAlign:"center"
-            }}>Student Information</h2>
-      <Table compact celled definition>
-        <Table.Header>
-          <Table.Row>
-            <Table.HeaderCell />
+      <div>
+        <h2
+          style={{
+            textAlign: "center"
+          }}
+        >
+          Student Information
+        </h2>
+        <Table compact celled definition>
+          <Table.Header>
+            <Table.Row>
+              <Table.HeaderCell />
 
-            <Table.HeaderCell>First Name</Table.HeaderCell>
-            <Table.HeaderCell>Last Name</Table.HeaderCell>
-            <Table.HeaderCell>E-mail address</Table.HeaderCell>
-            <Table.HeaderCell>Contact No</Table.HeaderCell>
-            <Table.HeaderCell>Applied To</Table.HeaderCell>
-            
-          </Table.Row>
-        </Table.Header>
+              <Table.HeaderCell>First Name</Table.HeaderCell>
+              <Table.HeaderCell>Last Name</Table.HeaderCell>
+              <Table.HeaderCell>E-mail address</Table.HeaderCell>
+              <Table.HeaderCell>Contact No</Table.HeaderCell>
+              <Table.HeaderCell>Applied To</Table.HeaderCell>
+            </Table.Row>
+          </Table.Header>
 
-        <Table.Body>
-          
+          <Table.Body>
             {this.state.dataSave.map(item => {
               return (
                 <Table.Row key={item.email}>
@@ -51,8 +53,8 @@ class StudentTable extends Component {
                 </Table.Row>
               );
             })}
-        </Table.Body>
-      </Table>
+          </Table.Body>
+        </Table>
       </div>
     );
   }
