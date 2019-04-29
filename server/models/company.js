@@ -18,13 +18,13 @@ const companySchema = mongoose.Schema({
     type: String,
     required: false,
     maxlength: 15,
-    trim:true
+    trim: true
   },
   CompanyCeo: {
     type: String,
     required: false,
     maxlength: 14,
-    trim:true
+    trim: true
   },
 
   role: {
