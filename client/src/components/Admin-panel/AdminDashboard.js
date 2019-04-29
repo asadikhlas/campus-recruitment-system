@@ -9,10 +9,10 @@ import {
   Segment,
   Visibility
 } from "semantic-ui-react";
-import StudentTable from "../ReusableComponents/StudentTable";
-import CompanyTable from "../ReusableComponents/CompanyTable";
-import AdminJobsTable from '../ReusableComponents/AdminStudentTable';
-import {Redirect } from 'react-router-dom';
+import AdminCompanyTable from "../ReusableComponents/AdminCompanyTable";
+import AdminStudentTable from "../ReusableComponents/AdminStudentTable";
+import AdminJobsTable from "../ReusableComponents/AdminJobsTable";
+import { Redirect } from "react-router-dom";
 
 // Heads up!
 // We using React Static to prerender our docs with server side rendering, this is a quite simple solution.
@@ -53,22 +53,21 @@ HomepageHeading.propTypes = {
 class DesktopContainer extends Component {
   state = {
     screen: "company",
-    redirect:false
+    redirect: false
   };
 
-  handleScreen = (event) => {
+  handleScreen = event => {
     this.setState({
       screen: event.target.name
-    })
-  }
+    });
+  };
 
   renderScreen = () => {
     switch (this.state.screen) {
-      case "company":
-        return <CompanyTable />;
-
       case "student":
-        return <StudentTable />;
+        return <AdminStudentTable />;
+      case "company":
+        return <AdminCompanyTable />;
       case "job":
         return <AdminJobsTable />;
       default:
@@ -78,14 +77,13 @@ class DesktopContainer extends Component {
   setRedirect = () => {
     this.setState({
       redirect: true
-    })
-  }
+    });
+  };
   renderRedirect = () => {
     if (this.state.redirect) {
-      return <Redirect to='/adminLogin' />
+      return <Redirect to="/adminLogin" />;
     }
-  }
-
+  };
 
   hideFixedMenu = () => this.setState({ fixed: false });
   showFixedMenu = () => this.setState({ fixed: true });
@@ -115,7 +113,7 @@ class DesktopContainer extends Component {
               size="large"
             >
               <Container>
-              <Button
+                <Button
                   as="a"
                   inverted={!fixed}
                   primary={fixed}
