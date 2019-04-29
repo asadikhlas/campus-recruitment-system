@@ -3,7 +3,6 @@ import Login from "./components/Auth/Login";
 import Dashboard from "./components/Dashboard";
 import CompanyDashboard from "./components/Company/CompanyDashboard";
 
-
 class App extends Component {
   state = {
     loggedIn: false,
