@@ -91,6 +91,6 @@ const baseUrl = "http://localhost:3002";
 //   .then(res => console.log(res))
 //   .catch(err => console.log(err));
 
-// axios.delete("http://localhost:3002/api/student",{data: {email: "daniyal@daniyal.com"}})
-//     .then(res => console.log(res))
-//     .catch(err => console.log(err))
+axios.delete("http://localhost:3002/api/student",{data: {email: "daniyal@daniyal.com"}})
+    .then(res => console.log(res))
+    .catch(err => console.log(err))
